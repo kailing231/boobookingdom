@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy Now</title>
+<link rel="icon" href="images/booboo.ico" type="image/gif">
+<link href="booboo.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="script/alertify.core.css">
+<link rel="stylesheet" type="text/css" href="script/alertify.default.css">
+<script src="script/javascriptFormVal.js"></script>
+<script src="script/alertify.js"></script>
+<script src="script/jquery-1.9.1.js"></script>
+<script>
+	function selectProduct() {			
+		var itemIndex = document.getElementById("productList").selectedIndex;
+		document.getElementById("itemText").innerHTML = document.getElementById("productList").options[itemIndex].innerHTML;		
+		document.getElementById("priceText").innerHTML = document.getElementById("productList").options[itemIndex].value;
+   	}	
+
+	function validateForm(){		
+		var errorFlag = false;
+		
+		//validate name input
+		if(!notEmpty("nameInput","Name is blank")){			
+			errorFlag = true;
+		}
+		else if (!nameValid("nameInput", "Enter proper name")){
+			errorFlag = true;
+		}
+		
+		//validate email
+		if(!notEmpty("emailInput","Email is blank")){			
+			errorFlag = true;
+		}
+		else if(!emailValid("emailInput", "Enter valid email")){
+			errorFlag = true;
+		}	
+		
+		//validate phone
+		if(!notEmpty("phoneInput","Phone number is blank")){			
+			errorFlag = true;
+		}
+		else if (!(checkLength("phoneInput", "Phone must be 8 Numbers", 8, 8)
+			&& (allNumbers("phoneInput", "Numeric only, starting with 8 or 9")))){
+			errorFlag = true;
+		}
+		
+		//validate select
+		if(!notDefaultValue("productList", "No item selected")){
+			errorFlag = true;
+		}
+		
+		return(!errorFlag);		
+	}	
+</script>
+</head>
+
+<body>
+<header>
+	<nav>
+	<ul>
+    	<li class="left"><a href="products.html">Products</a></li>        
+    	<li class="left"><a href="aboutUs.html">About</a></li>
+        <li id="logo"><a href="index.html"><img src="images/logo3_FINAL.png" width="104" height="109" alt=""/></a></li>
+        <li class="right"><a href="luckyDraw.html">Smiley</a></li>
+        <li class="right"><a href="buyNow.html">Purchase</a></li>        
+    </ul>
+	</nav>
+</header>
+
+<div id="formBox">
+<form name="contact" id="contact" action="receipt.html" method="post" onSubmit="return validateForm()">
+		<fieldset id="customerInfo">
+       		<label for="nameInput">
+            	Name:
+              	<input type="text" id="nameInput" name="name"/>
+            </label>
+            
+            <label for="emailInput">
+              	Email:
+              	<input type="text" id="emailInput" name="email" />
+            </label>
+            
+            <label for="phoneInput">
+        		Phone:
+              	<input type="text" id="phoneInput" name="phone"/>
+            </label>
+		</fieldset>
+        
+        <fieldset id="productInfo">
+        	<legend>Select Product</legend>
+       		<select id="productList" onchange = "selectProduct()">
+            	<option value="$0.00">No Item Selected</option>
+				<optgroup label="Classic">
+    				<option value="$15.00">Hare</option>
+    				<option value="$99.99">Llama</option>
+                    <option value="$10.00">Mouse</option>
+                    <option value="$35.00">Bear</option>
+  				</optgroup>
+                
+  				<optgroup label="Tiger Craze">
+    				<option value="$100.00">Tiger 1 (small)</option>
+    				<option value="$33.33">Tiger 2 (white)</option>
+                    <option value="$50.00">Tiger 3 (big)</option>
+                    <option value="$20.00">Tiger 4 (medium)</option>
+  				</optgroup>
+                
+                <optgroup label="Ocean Love">
+                <option value="$50.00">Shark</option>
+                <option value="$69.69">Whale Boy</option>
+                <option value="$69.69">Whale Girl</option>
+                </optgroup>
+			</select>
+            
+        </fieldset>
+        
+        <div>
+        	Sorry, delivery currently unavailable.<br>
+            Pick up item <a href = "http://www.sps.gov.sg/"> here </a>
+        </div>
+        
+        <div id="reviewBox">
+       		<p id="itemText">No item selected</p>
+        	<p id="priceText">Price = $0.00</p>
+        </div>
+          
+     	<fieldset id="submitbutton">
+            	<input type="submit" value="Submit" />
+   		</fieldset>
+</form>
+</div>
+
+<footer>
+	<p>BooBoo Independant Group</p>
+</footer>
+   
+</body>
+</html>

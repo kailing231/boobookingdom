@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank You!</title>
+<link rel="icon" href="images/booboo.ico" type="image/gif">
+<link href="booboo.css" rel="stylesheet" type="text/css">
+<script src="script/jquery-1.9.1.js"></script>
+<script>
+	$(function generateCode(){
+		document.getElementById("code").innerHTML =  Math.floor((Math.random() * 899999) + 100000);
+	});
+</script>
+</head>
+
+<body>
+<header>
+	<nav>
+	<ul>
+    	<li class="left"><a href="products.html">Products</a></li>        
+    	<li class="left"><a href="aboutUs.html">About</a></li>
+        <li id="logo"><a href="index.html"><img src="images/logo3_FINAL.png" width="104" height="109" alt=""/></a></li>
+        <li class="right"><a href="luckyDraw.html">Smiley</a></li>
+        <li class="right"><a href="buyNow.html">Purchase</a></li>        
+    </ul>
+	</nav>
+</header>    
+
+<div id="receiptBox">
+	<h1>Thank you for purchasing!</h1>
+    <h3>The receipt has been sent to your email*</h3>
+    <div>Code for Monthly Luck Draw is <span id="code">theCode</span></div>
+    <a href="products.html"><h3>Click here to go back to Products</h3></a>    
+    <p>*This is just for stimulation purpose</p>
+</div>
+
+<footer>
+	<p>BooBoo Independant Group</p>
+</footer>
+
+</body>
+</html>
